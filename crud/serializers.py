@@ -1,4 +1,4 @@
-from .models import UserWallet
+from .models import UserWallet, Promocion, Concurso
 from django.contrib.auth.models import User
 from rest_framework.serializers import ModelSerializer
 
@@ -29,3 +29,15 @@ class UserWalletSerializer(ModelSerializer):
         walletuser = UserWallet.objects.update_or_create(
             user=user, wallet=validated_data['wallet'])
         return walletuser
+
+
+class PromocionSerializer(ModelSerializer):
+    class Meta:
+        model = Promocion
+        fields = '__all__'
+
+
+class ConcursoSerializer(ModelSerializer):
+    class Meta:
+        model = Concurso
+        fields = '__all__'
