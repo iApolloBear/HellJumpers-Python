@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'crud',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Micrositio.wsgi.application'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    # 'DEFAULT_PERMISSION_CLASSES': {
+    #     'rest_framework.permissions.IsAuthenticated',
+    # }
+}
 
 
 # Database
@@ -124,4 +134,3 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-

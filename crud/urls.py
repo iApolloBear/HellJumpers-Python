@@ -10,7 +10,9 @@ urlpatterns = [
          name='promocion_registration'),
     path('concurso/', views.ConcursoListCreateView.as_view(),
          name='concurso_registration'),
-    path('excel/', views.ExcelParser.as_view(), name='excel')
+    path('excel/', views.ExcelParser.as_view(), name='excel'),
+    path('hello/', views.Hello.as_view(), name='hello'),
+    path('users/', views.UserList.as_view(), name='users')
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
