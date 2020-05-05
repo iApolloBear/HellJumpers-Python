@@ -23,6 +23,7 @@ class Promocion(models.Model):
     descuento = models.CharField(max_length=20)
     cartera = models.CharField(max_length=20)
     image = models.ImageField(upload_to='promocion/images/')
+    promo_wallet = models.ForeignKey(UserWallet, related_name='user_promo_wallets', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre
@@ -37,6 +38,7 @@ class Concurso(models.Model):
     restricciones = models.CharField(max_length=200)
     cartera = models.CharField(max_length=20)
     image = models.ImageField(upload_to='concurso/images/')
+    contest_wallet = models.ForeignKey(UserWallet, related_name='user_contest_wallets', on_delete=models.CASCADE)
 
     def __unicode__(self,):
         return self.nombre

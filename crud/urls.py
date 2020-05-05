@@ -11,7 +11,7 @@ urlpatterns = [
     path('concurso/', views.ConcursoListCreateView.as_view(),
          name='concurso_registration'),
     path('excel/', views.ExcelParser.as_view(), name='excel'),
-    path('hello/', views.Hello.as_view(), name='hello'),
+    path('', views.Hello.as_view(), name='hello'),
     path('users/', views.UserList.as_view(), name='users')
 ]
 
