@@ -14,6 +14,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
+
 class Hello(APIView):
     permission_classes = (IsAuthenticated,)
 
@@ -21,6 +22,7 @@ class Hello(APIView):
         user = UserWallet.objects.get(pk=request.user.pk)
         serializer = UserWalletSerializer(user)
         return Response(serializer.data)
+
 
 class UserList(ListCreateAPIView):
     queryset = UserWallet.objects.all()
@@ -46,12 +48,22 @@ class PromocioListCreateView(ListCreateAPIView):
     queryset = Promocion.objects.all()
     serializer_class = PromocionSerializer
 
+    def list(self, request):
+        queryset = Promocion.objects.filter(promo_wallet=request.user.id)
+        serializer = PromocionSerializer(queryset, many=True)
+        return Response(serializer.data)
+
 
 class ConcursoListCreateView(ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
 
     queryset = Concurso.objects.all()
     serializer_class = ConcursoSerializer
+
+    def list(self, request):
+        queryset = Concurso.objects.filter(contest_wallet=request.user.id)
+        serializer = ConcursoSerializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 class ExcelParser(APIView):
